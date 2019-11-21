@@ -5,11 +5,11 @@
         <title>Enquiry Form</title>
         <meta charset="UTF-8">        
         <link th:href="@{/main.css}" type="text/css" rel="stylesheet" />
-        <script th:src="@{/jquery-3.4.1.min.js}"></script>        
-        <script>
+        <script th:src="@{/jquery-3.4.1.min.js}"></script>
+       <!-- <script>
             var courses;
             $(document).ready(function () {
-                $("#id_instId").change(function () {                    
+                $("#id_instId").change(function () {
                     //id_courses
                     $.ajax({
                         url: 'get-courses',
@@ -48,13 +48,13 @@
                     }
                 }
             }
-        </script>
+        </script>-->
     </head>
     <body>
         <div th:insert="menu"></div>
         <div class="main">
             <div th:insert="header"></div>
-            <form th:action="@{/save-enquiry}" th:object="${cmd}">
+           <!-- <form th:action="@{/save-enquiry}" th:object="${cmd}">
                 <table border="1" width="90%" align="center" cellpadding="5">
                     <tr>
                         <td class="fheading" colspan="4">Enquiry Form</td>
@@ -75,7 +75,7 @@
                                 Add New
                             </a>
 
-                        </td>                  
+                        </td>
                     </tr>
                     <tr>
                         <td>Name</td>
@@ -98,13 +98,13 @@
                         <td>Courses</td>
                         <td colspan="3" id="id_courses">
 
-                        </td>                         
+                        </td>
                     </tr>
                     <tr>
                         <td>Fees Commitment</td>
                         <td>
                             <input type="text" th:field="*{enquiry.committedFees}"  id="id_fees"/>
-                        </td>   
+                        </td>
                         <td>Source</td>
                         <td>
                             <select th:field="*{enquiry.enquirySource.enquirySourceId}">
@@ -120,16 +120,16 @@
                         <td>Remark</td>
                         <td colspan="3" >
                             <textarea placeholder="additional detail" title="additional info - if any" cols="60" rows="3" th:field="*{enquiry.remark}" id="id_remark"></textarea>
-                        </td>                                        
+                        </td>
                     </tr>
-                    <tr>                    
+                    <tr>
                         <td colspan="4" align="center">
                             <button id="id_btn_save">Save</button>
-                        </td>                                        
+                        </td>
                     </tr>
 
                 </table>
-            </form>
+            </form>-->
 
         </div>
     </body>

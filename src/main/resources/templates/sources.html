@@ -50,7 +50,7 @@ and open the template in the editor.
                     <td th:text="${itr.count}">SR</td>
                     <td th:text="${es.enquirySourceId}">ID</td>
                     <td th:text="${es.name}">SOURCE</td>                        
-                    <td> <a th:href="@{'/enquiry-source-edit/'+${es.enquirySourceId}}">Edit</a> | <a th:href="@{'/enquiry-source-delete/'+${es.enquirySourceId}}">Delete</a></td>                        
+                    <td> <a th:href="@{'/edit-enquiry-source/'+${es.enquirySourceId}}">Edit</a> | <a th:href="@{'/delete-enquiry-source/'+${es.enquirySourceId}}">Delete</a></td>
                 </tr>
             </table>
         </div>
