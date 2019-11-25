@@ -1,6 +1,7 @@
 package com.enquery.repository;
 
 import com.enquery.model.Enquiry;
+import org.springframework.stereotype.Service;
 
 public class EnquiryCommand {
     Enquiry enquiry;
