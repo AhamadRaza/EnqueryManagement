@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Map;
@@ -45,4 +46,17 @@ public class CourseController {
         //return courseRepository.findAll();
         return courseService.getCourse();
     }*/
+
+    @GetMapping(value = "/edit-course/{id}")
+    public String edit(@PathVariable Long id , Model model){
+        Course cmd= courseService.findById(id);
+        model.addAttribute("cmd", cmd);
+        return "/courses";
+    }
+
+    @GetMapping(value = "/delete-course/{id}")
+    public String delete(@PathVariable Long id){
+        courseService.delete(id);
+        return "redirect:/courses"; // redirect:/sources.html
+    }
 }

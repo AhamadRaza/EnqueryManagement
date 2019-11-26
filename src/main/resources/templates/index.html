@@ -66,8 +66,6 @@
             <tr>
                 <td>Institute</td>
                 <td colspan="3" valign="center">
-
-
                     <select id="id_instId" th:field="*{enquiry.institute.instituteId}" >
                         <option value=""></option>
                         <option th:each="i : ${instituteList}" th:value="${i.instituteId}" th:text="${i.name}">
@@ -112,6 +110,7 @@
                 <td>Source</td>
                 <td>
                     <select th:field="*{enquiry.enquirySource.enquirySourceId}">
+                        <option value=""></option>
                         <option th:each="s : ${sourceList}" th:value="${s.enquirySourceId}" th:text="${s.name}">
                         </option>
                     </select>

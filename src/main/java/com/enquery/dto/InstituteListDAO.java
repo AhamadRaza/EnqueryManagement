@@ -1,4 +1,4 @@
-package com.enquery.repository;
+package com.enquery.dto;
 
 public interface InstituteListDAO {
     Integer getInstituteId();

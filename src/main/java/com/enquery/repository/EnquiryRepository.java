@@ -1,8 +1,8 @@
 package com.enquery.repository;
 
+import com.enquery.dto.EnquiryDTO;
 import com.enquery.model.Enquiry;
 
-import org.hibernate.validator.constraints.ScriptAssert;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

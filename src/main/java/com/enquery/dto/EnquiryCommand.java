@@ -1,4 +1,4 @@
-package com.enquery.repository;
+package com.enquery.dto;
 
 import com.enquery.model.Enquiry;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,9 @@ public class EnquiryCommand {
         return enquiry;
     }
 
-    public void setEnquiry(Enquiry enquiry) {
+    public Enquiry setEnquiry(Enquiry enquiry) {
         this.enquiry = enquiry;
+        return enquiry;
     }
 
     public Long[] getCourses() {

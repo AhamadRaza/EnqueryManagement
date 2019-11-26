@@ -1,5 +1,6 @@
 package com.enquery.service;
 
+import com.enquery.dto.InstituteListDAO;
 import com.enquery.model.*;
 import com.enquery.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,11 @@ public class InstituteService {
         addressRepository.save(institute.getContact().getPermanentAddress());
         contactRepository.save(institute.getContact());
         instituteRepository.save(institute);
+    }
+    public Institute findById(Long id){
+        return instituteRepository.findById(id).get();
+    }
+    public void delete(Long id){
+        instituteRepository.deleteById(id);
     }
 }

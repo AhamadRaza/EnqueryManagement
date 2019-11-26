@@ -34,7 +34,7 @@
                 <td th:text="${inst.phone}">PHONE</td>
                 <td th:text="${inst.email}">EMAIL</td>
                 <td th:text="${inst.city}">CITY</td>
-                <td><a href="">Edit</a> | <a href="">Delete</a></td>                                
+                <td><a th:href="@{'/edit-institute/'+${inst.instituteId}}">Edit</a> | <a th:href="@{'/delete-institute/'+${inst.instituteId}}">Delete</a></td>
             </tr> 
         </table>
         </div>

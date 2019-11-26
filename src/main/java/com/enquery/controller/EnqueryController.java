@@ -1,9 +1,10 @@
 package com.enquery.controller;
 
+import com.enquery.dto.EnquiryCommand;
 import com.enquery.model.Course;
+import com.enquery.model.Enquiry;
 import com.enquery.model.EnquirySource;
 import com.enquery.model.Institute;
-import com.enquery.repository.*;
 import com.enquery.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,4 +83,17 @@ public class EnqueryController {
 
         return enquiryRepository.getEnquiryDetailMap(id);
     }*/
+    @GetMapping(value = "/edit-enquiry/{id}")
+    public String edit(@PathVariable Long id , Model model,EnquiryCommand ecmd){
+        Enquiry cmd= ecmd.setEnquiry(enquiryService.findById(id));
+               // enquiryService.findById(id);
+        model.addAttribute("cmd", cmd);
+        return "/index";
+    }
+
+    @GetMapping(value = "/delete-enquiry/{id}")
+    public String delete(@PathVariable Long id){
+        enquiryService.delete(id);
+        return "redirect:/enq-list"; // redirect:/enq-list.html
+    }
 }

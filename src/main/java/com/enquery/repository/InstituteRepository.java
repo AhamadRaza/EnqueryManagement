@@ -1,6 +1,6 @@
 package com.enquery.repository;
 
-import com.enquery.model.Address;
+import com.enquery.dto.InstituteListDAO;
 import com.enquery.model.Institute;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

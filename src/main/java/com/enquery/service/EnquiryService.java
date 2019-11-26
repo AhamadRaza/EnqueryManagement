@@ -1,5 +1,7 @@
 package com.enquery.service;
 
+import com.enquery.dto.EnquiryCommand;
+import com.enquery.dto.EnquiryDTO;
 import com.enquery.model.Address;
 import com.enquery.model.Contact;
 import com.enquery.model.Enquiry;
@@ -33,6 +35,15 @@ public class EnquiryService {
 
     public Map<String, Object> getEnquiryDetailMap(Long enquiryId){
         return enquiryRepository.getEnquiryDetailMap(enquiryId);
+    }
+
+    public Enquiry findById(Long id){
+
+        return enquiryRepository.findById(id).get();
+    }
+
+    public void delete(Long id){
+        enquiryRepository.deleteById(id);
     }
 
     @Transactional
