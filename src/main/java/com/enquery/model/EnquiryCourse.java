@@ -18,10 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- *
- * @author Vikram
- */
+
 @Entity
 @Table(name = "enquirycourse")
 public class EnquiryCourse implements Serializable {

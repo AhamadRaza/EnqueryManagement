@@ -4,26 +4,22 @@ import com.enquery.model.Course;
 import com.enquery.model.EnquirySource;
 import com.enquery.model.Institute;
 import com.enquery.repository.*;
-import com.enquery.service.InstituteService;
+import com.enquery.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class EnqueryController {
-
-    @Autowired private InstituteRepository instituteRepository;
-    @Autowired private EnquirySourceRepository enquirySourceRepository;
-    @Autowired private CourseRepository courseRepository;
-    @Autowired private EnquiryRepository enquiryRepository;
+    @Autowired private CourseService courseService;
     @Autowired private InstituteService instituteService;
-    @Autowired private FollowUpRepository followUpRepository;
+    @Autowired private FollowUpService followUpService;
+    @Autowired private EnquiryService enquiryService;
+    @Autowired private EnquirySourceService enquirySourceService;
 
     @GetMapping("/")
     public String index(Model m) {
@@ -32,9 +28,8 @@ public class EnqueryController {
     }
 
     @GetMapping("/save-enquiry")
-    @ResponseBody
     public String save(@ModelAttribute EnquiryCommand cmd) {
-       instituteService.saveEnquiry(cmd);
+        enquiryService.saveEnquiry(cmd);
         return "redirect:/enq-list";
     }
     /*@GetMapping("/test-enquiry")
@@ -43,13 +38,13 @@ public class EnqueryController {
     }*/
     @GetMapping("/enq-list")
     public String enquiryList(@RequestParam(required = false) Long instId , Model model) {
-        model.addAttribute("enquiryList" ,enquiryRepository.getEnquiryDTOList(instId));
+        model.addAttribute("enquiryList" ,enquiryService.getEnquiryDTOList(instId));
         return "/enq-list";
     }
 
     @PostMapping("/save-followup")
     public String saveFollowUp(@RequestParam Long enquiryId , @RequestParam String followup , @RequestParam(required = false) String go){
-        instituteService.saveFollowUp(enquiryId, followup);
+        followUpService.saveFollowUp(enquiryId, followup);
         if(go!=null && go.equals("eview")){
             return "redirect:/enquiry-detail/"+enquiryId;
         }
@@ -61,23 +56,23 @@ public class EnqueryController {
     @GetMapping("/get-courses")
     @ResponseBody
     public List<Course> getCourseByInstitudeId(@RequestParam Long instId){
-        return courseRepository.findCourseListByInstitute_instituteId(instId);
+        return courseService.findCourseListByInstituteId(instId);
     }
 
     @ModelAttribute("instituteList")
     public List<Institute> getInstList() {
-        return instituteRepository.getInstituteList();
+        return instituteService.getCustomeList();
     }
 
     @ModelAttribute("sourceList")
     public List<EnquirySource> getSourceList() {
-        return enquirySourceRepository.findAll();
+        return enquirySourceService.findListES();
     }
 
     @GetMapping("/enquiry-detail/{id}")
     public String enquiryDetail(@PathVariable Long id , Model model){
-        model.addAttribute("dataMap" , enquiryRepository.getEnquiryDetailMap(id));
-        model.addAttribute("followupList" , followUpRepository.getFollowupsByEnquiryId(id));
+        model.addAttribute("dataMap" , enquiryService.getEnquiryDetailMap(id));
+        model.addAttribute("followupList" , followUpService.getFollowupsByEnquiryId(id));
         return "/enquiry-detail";
     }
 

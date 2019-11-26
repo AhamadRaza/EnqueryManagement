@@ -1,7 +1,6 @@
 package com.enquery.controller;
 
 import com.enquery.model.Institute;
-import com.enquery.repository.InstituteRepository;
 import com.enquery.service.InstituteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +12,7 @@ import java.util.Date;
 
 @Controller
 public class InstituteController {
-    @Autowired
-    private InstituteService instituteService;
-
-    @Autowired
-    private InstituteRepository instituteRepository;
+    @Autowired private InstituteService instituteService;
 
     @GetMapping(value = "/institute-form")
     public String form(Model model){
@@ -34,8 +29,8 @@ public class InstituteController {
     }
     @GetMapping(value = "/institute-list")
     public String list(Model model){
-        //model.addAttribute("instList" , instituteRepository.findAll());
-        model.addAttribute("instList" , instituteRepository.getInstList());
+        //model.addAttribute("instList" , instituteService.findAll());
+        model.addAttribute("instList" , instituteService.getInstList());
         return "/institute-list";
     }
 }

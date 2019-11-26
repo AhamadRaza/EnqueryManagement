@@ -10,10 +10,7 @@ import java.io.*;
 import java.util.List;
 import javax.persistence.*;
 
-/**
- *
- * @author Vikram
- */
+
 @Entity
 @Table(name = "address")
 public class Address implements Serializable {

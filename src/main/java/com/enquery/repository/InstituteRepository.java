@@ -13,5 +13,5 @@ public interface InstituteRepository extends JpaRepository<Institute, Long> {
     public List<InstituteListDAO> getInstList();
 
     @Query("SELECT new com.enquery.model.Institute(i.instituteId , i.name) FROM  Institute AS i")
-    public List<Institute> getInstituteList();
+    public List<Institute> getInstituteCustomeList();
 }

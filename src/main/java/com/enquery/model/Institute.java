@@ -23,10 +23,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-/**
- *
- * @author Vikram
- */
 @Entity
 @Table(name = "institute")
 public class Institute implements Serializable {

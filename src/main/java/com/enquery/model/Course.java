@@ -22,10 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-/**
- *
- * @author Vikram
- */
+
 @Entity
 @Table(name = "course")
 public class Course implements Serializable {
