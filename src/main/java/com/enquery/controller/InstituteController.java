@@ -1,5 +1,7 @@
 package com.enquery.controller;
 
+import com.enquery.model.Address;
+import com.enquery.model.Contact;
 import com.enquery.model.Institute;
 import com.enquery.service.InstituteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 public class InstituteController {
@@ -36,13 +39,13 @@ public class InstituteController {
     }
 
     @GetMapping(value = "/edit-institute/{id}")
-    public String edit(@PathVariable Long id , Model model){
+    public String edit(@PathVariable Long id, Model model){
         Institute cmd= instituteService.findById(id);
         model.addAttribute("cmd", cmd);
         return "/institute-form";
     }
     @GetMapping(value = "/delete-institute/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Institute id){
         instituteService.delete(id);
         return "redirect:/institute-list";
     }

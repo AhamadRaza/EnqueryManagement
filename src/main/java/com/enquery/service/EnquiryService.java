@@ -42,8 +42,10 @@ public class EnquiryService {
         return enquiryRepository.findById(id).get();
     }
 
-    public void delete(Long id){
-        enquiryRepository.deleteById(id);
+    public void delete(Enquiry enquiry){
+        addressRepository.delete(enquiry.getContact().getPermanentAddress());
+        contactRepository.delete(enquiry.getContact());
+        enquiryRepository.delete(enquiry);
     }
 
     @Transactional

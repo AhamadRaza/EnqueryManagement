@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InstituteService {
@@ -30,9 +31,14 @@ public class InstituteService {
         instituteRepository.save(institute);
     }
     public Institute findById(Long id){
+        addressRepository.findById(id);
+        contactRepository.findById(id);
+        instituteRepository.findById(id);
         return instituteRepository.findById(id).get();
     }
-    public void delete(Long id){
-        instituteRepository.deleteById(id);
+    public void delete(Institute institute){
+        addressRepository.delete(institute.getContact().getPermanentAddress());
+        contactRepository.delete(institute.getContact());
+        instituteRepository.delete(institute);
     }
 }
